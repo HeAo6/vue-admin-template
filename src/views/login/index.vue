@@ -1,9 +1,10 @@
 <template>
   <div class="login-container">
+    <!-- model是收集表单元素， rules验证规则 -->
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
 
       <div class="title-container">
-        <h3 class="title">Login Form</h3>
+        <h3 class="title">登录</h3>
       </div>
 
       <el-form-item prop="username">
@@ -41,7 +42,7 @@
         </span>
       </el-form-item>
 
-      <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">Login</el-button>
+      <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">登录</el-button>
 
       <div class="tips">
         <span style="margin-right:20px;">username: admin</span>
@@ -102,14 +103,20 @@ export default {
         this.passwordType = 'password'
       }
       this.$nextTick(() => {
-        this.$refs.password.focus()
+        this.$refs.password.focus()  //表单自动聚焦
       })
     },
     handleLogin() {
+      //登录功能，发请求给服务器，带着用户名与密码给服务器
       this.$refs.loginForm.validate(valid => {
+        // 验证用户名和密码是否符合规则
         if (valid) {
+          // 如果符合进行下一步
+          //开始loading加载效果
           this.loading = true
+          //派发一个action：user/login，带着用户名和密码的载荷
           this.$store.dispatch('user/login', this.loginForm).then(() => {
+            //登录成功进行路由的跳转
             this.$router.push({ path: this.redirect || '/' })
             this.loading = false
           }).catch(() => {
@@ -141,6 +148,8 @@ $cursor: #fff;
 
 /* reset element-ui css */
 .login-container {
+   background: url(https://tse1-mm.cn.bing.net/th/id/R-C.4653884927638eaa7de26f1ebc7144fe?rik=eGY%2baDqKM1M3oQ&riu=http%3a%2f%2fimage.qianye88.com%2fpic%2f7fc9c87bb36f1c7bf2707f66e52d71c3&ehk=9SoGemNDK%2f6p5Cm1UHrOhV13eIwX%2bfqhzB1OJ9ZiiRs%3d&risl=&pid=ImgRaw&r=0);
+   background-size:100% 100% ;
   .el-input {
     display: inline-block;
     height: 47px;
