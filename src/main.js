@@ -44,6 +44,7 @@ Vue.prototype.$API = API
 
 new Vue({
   el: '#app',
+  //路由js渲染
   router,
   store,
   render: h => h(App)
