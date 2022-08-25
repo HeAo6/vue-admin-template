@@ -64,6 +64,7 @@
        <el-row>
       <el-col :span="5">商品图片</el-col>
       <el-col :span="16">
+        <!-- 轮播图 -->
         <el-carousel height="150px">
          <el-carousel-item v-for="item in skuInfo.skuImageList" :key="item.id">  
                <img :src="item.imgUrl">
@@ -155,6 +156,7 @@
   .el-carousel__item:nth-child(2n+1) {
      background-color: #d3dce6;
   }
+ 
 </style>
 
 <style scoped>
@@ -166,7 +168,7 @@
      margin:10px 10px;
    }
 
-   .el-carousel__button{
+   >>>.el-carousel__button{
     width:10px;
     height:10px;
     background:red;
