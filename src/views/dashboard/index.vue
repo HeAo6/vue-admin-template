@@ -1,5 +1,6 @@
 <template>
   <div>
+    首页的内容
     <Card></Card>
     <Sale></Sale>
     <Observe></Observe>
